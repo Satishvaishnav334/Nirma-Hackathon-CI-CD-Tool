@@ -1,7 +1,7 @@
-const express = require("express");
-const router = express.Router();
-const TestCase = require("../models/TestCase");
+import express from "express";
+import TestCase from "../models/TestCase.js";
 
+const router = express();
 // Create a test case
 router.post("/", async (req, res) => {
   const { title, description, steps, expectedResult } = req.body;
@@ -23,4 +23,4 @@ router.put("/:id", async (req, res) => {
   res.json(testCase);
 });
 
-module.exports = router;
+export default router;

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const TestCaseSchema = new mongoose.Schema({
   title: String,
@@ -9,4 +9,5 @@ const TestCaseSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model("TestCase", TestCaseSchema);
+const TestCase = mongoose.model("TestCase", TestCaseSchema);
+export default TestCase;
