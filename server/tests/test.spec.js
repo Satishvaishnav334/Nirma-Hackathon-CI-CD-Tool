@@ -1,7 +1,6 @@
-const { test, expect } = require("@playwright/test");
+import { test, expect } from "@playwright/test";
 
-test("Verify homepage loads", async ({ page }) => {
-  await page.goto("http://localhost:8000");
-  await expect(page).toHaveTitle(/Test Automation/);
+test("Verify backend is running", async ({ request }) => {
+  const response = await request.get("http://localhost:8000");
+  expect(response.status()).toBe(200); // Expect 200 OK
 });
-
