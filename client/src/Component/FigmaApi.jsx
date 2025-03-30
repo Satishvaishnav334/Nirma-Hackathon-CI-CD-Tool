@@ -33,10 +33,10 @@ const FigmaViewer = () => {
   console.log(figmaData)
 
   return (
-    <div className="p-6 min-h-screen min-w-screen bg-gray-900 text-white flex flex-col items-center">
-      <h2 className="text-3xl font-bold mb-4">Figma File Viewer</h2>
+    <div className="p-6 min-h-screen min-w-screen bg-gray-900 justify-center align-middle text-white flex flex-col items-center">
+      <h2 className="text-3xl font-bold mb-4">Start Test</h2>
      <form onSubmit={onsubmit}>
-     <div className="flex gap-2">
+     <div className="flex flex-col gap-2">
         <input
           type="text"
           placeholder="Enter Figma File ID"
@@ -46,14 +46,14 @@ const FigmaViewer = () => {
         />
          <input
           type="text"
-          placeholder="Enter Figma File ID"
+          placeholder="Enter Your github repo"
           value={repo}
           onChange={(e) => setRepo(e.target.value)}
           className="p-2 w-80 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
          <input
           type="text"
-          placeholder="Enter Figma File ID"
+          placeholder="Enter Your Requirement if have"
           value={requirement}
           onChange={(e) => setRequirement(e.target.value)}
           className="p-2 w-80 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"

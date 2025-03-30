@@ -71,7 +71,9 @@ const getLogicFromCodebase = AsyncHandler(async (req, res) => {
 });
 
 const fetchFigmaFile = async (req, res) => {
-  const fileId = req.body.fileId;
+const {fileId,repo,requirement} = req.body;
+console.log(repo)                //project repo
+console.log(requirement)        //user other requirement if have
   const accessToken = req.headers.authorization?.split(" ")[1]; 
 
 
