@@ -11,8 +11,6 @@ export const fetchFigmaFile = async (req, res) => {
     }
   
     const accessToken = authHeader.split(" ")[1]; // Extract the token after 'Bearer'
-    console.log(accessToken)
-  console.log(fileId)
     const response = await axios.get(`https://api.figma.com/v1/files/${fileId}`, {
       headers: { 'X-Figma-Token': accessToken }
     });
