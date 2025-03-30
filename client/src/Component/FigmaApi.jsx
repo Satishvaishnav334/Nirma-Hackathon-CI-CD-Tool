@@ -16,7 +16,13 @@ const FigmaViewer = () => {
     }
 
     try {
-      const response = await axios.get(`http://localhost:8000/api/figma/${fileId}`);
+      const token =import.meta.env.FIGMA_API_KEY
+      console.log(token)
+      const response = await axios.get(`http://localhost:8000/api/figma/${fileId}`,{
+        headers:{
+          Authorization:token
+        }
+      });
       setFigmaData(response.data);
     } catch (err) {
       console.log(err)

@@ -6,7 +6,7 @@ export const fetchFigmaFile = async (req, res) => {
 
   try {
     const response = await axios.get(`https://api.figma.com/v1/files/${fileId}`, {
-      headers: { Authorization: `Bearer ${accessToken}` }
+      headers: { Authorization: `X-Figma-Token ${accessToken}` }
     });
 
     res.json(response.data); // Send Figma file data as response
