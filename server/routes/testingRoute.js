@@ -4,6 +4,6 @@ import authenticateFigma from '../middleware/authmiddleware.js';
 
 const router = Router();
 router.get('/figma/:fileId', authenticateFigma, fetchFigmaFile);
-router.get('/get-logic/:githubRepoUrl', getLogicFromCodebase);
+router.get('/get-logic?', getLogicFromCodebase);
 
 export default router;
