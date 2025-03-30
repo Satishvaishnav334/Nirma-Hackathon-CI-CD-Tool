@@ -1,4 +1,5 @@
 import express from 'express';
+import routes from './routes/healthRoute.js';
 import cors from "cors";
 import dotenv from 'dotenv'
 dotenv.config({
@@ -23,5 +24,11 @@ app.use(cors({
 import testingRouter from "./routes/testingRoute.js"
 
 app.use("/api", testingRouter)
+app.use('/', routes);
+
+// routes
+import healthRouter from "./routes/healthRoute.js"
+
+app.use("/api/v1/users", healthRouter)
 
 export default app;
