@@ -1,5 +1,7 @@
 import express from 'express';
+import routes from './routes/healthRoute.js';
 import cors from "cors";
+
 const app = express();
 const corsOptions = {
   origin: process.env.ACCESS_CONTROL_ORIGIN,
@@ -16,5 +18,11 @@ app.options('*', cors());
 import testingRouter from "./routes/testingRoute.js"
 
 app.use("/api", testingRouter)
+app.use('/', routes);
+
+// routes
+import healthRouter from "./routes/healthRoute.js"
+
+app.use("/api/v1/users", healthRouter)
 
 export default app;
