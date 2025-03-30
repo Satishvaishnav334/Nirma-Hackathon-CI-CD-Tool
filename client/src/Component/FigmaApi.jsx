@@ -23,7 +23,7 @@ const FigmaViewer = () => {
     try {
       const token = import.meta.env.VITE_FIGMA_API_KEY;
       const response = await axios.post('http://localhost:8000/api/testplandata',{fileId,repo,requirement}, {
-        headers: {
+        headers: {'Access-Control-Allow-Origin':'http://localhost:5173',
           Authorization: `Bearer ${token}`,}})
       setFigmaData(response.data);
     } catch (err) {

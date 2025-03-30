@@ -4,6 +4,8 @@ import util from "util";
 import os from "os"
 const execPromise = util.promisify(exec);
 import { AsyncHandler, ApiResponse } from "../utils/ApiHelpers.js";
+import { TestScript } from '../models/testScript.js';
+
 
 const getLogicFromCodebase = AsyncHandler(async (req, res) => {
   // Use query parameters for the repo URL—trust me, your routing will thank you.
@@ -87,4 +89,8 @@ const fetchFigmaFile = async (req, res) => {
   }
 };
 
-export { getLogicFromCodebase, fetchFigmaFile }
+const testScript = ()=>{
+
+}
+
+export { getLogicFromCodebase, fetchFigmaFile ,testScript}
