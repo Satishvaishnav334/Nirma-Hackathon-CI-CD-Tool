@@ -1,9 +1,11 @@
 import React from 'react'
-import FigmaViewer from './Component/FigmaApi'
+import Dashboard from './Pages/Dashboard'
+import Nav from './Component/Nav'
 function App() {
   return (
-    <div>
-      <FigmaViewer/>
+    <div className=' bg-gray-900 '>
+      <Nav ></Nav>
+      <Dashboard></Dashboard>
     </div>
   )
 }
