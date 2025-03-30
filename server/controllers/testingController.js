@@ -24,15 +24,16 @@ const getLogicFromCodebase = AsyncHandler(async (req, res) => {
 })
 
 const fetchFigmaFile = async (req, res) => {
-  const { fileId } = req.params;
-  const accessToken = req.accessToken; // Token from middleware
+  const fileId = req.body.fileId;
+  const accessToken = req.headers.authorization?.split(" ")[1]; 
+
 
   try {
     const response = await axios.get(`https://api.figma.com/v1/files/${fileId}`, {
-      headers: { Authorization: `X-Figma-Token ${accessToken}` }
+      headers: { 'X-Figma-Token': accessToken }
     });
-
-    res.json(response.data); // Send Figma file data as response
+    const figmaobject = response.data;
+    res.json(response.data);
   } catch (error) {
     console.error("Error fetching Figma file:", error.response?.data || error.message);
     res.status(error.response?.status || 500).json({

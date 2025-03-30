@@ -15,6 +15,6 @@ app.options('*', cors());
 
 import testingRouter from "./routes/testingRoute.js"
 
-app.use("/api/testing", testingRouter)
+app.use("/api", testingRouter)
 
 export default app;
