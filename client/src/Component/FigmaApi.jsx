@@ -38,13 +38,6 @@ const FigmaViewer = () => {
     }
 
     try {
-<<<<<<< Updated upstream
-      const token = import.meta.env.VITE_FIGMA_API_KEY;
-      const response = await axios.post('http://localhost:8000/api/testplandata',{fileId,repo,requirement}, {
-        headers: {
-          Authorization: `Bearer ${token}`,}})
-      setFigmaData(response.data);
-=======
       const figmaAccessToken = import.meta.env.VITE_FIGMA_API_KEY;
       const webhookId = import.meta.env.VITE_BOTPRESS_WEBHOOK_URL;
       if (!webhookId) throw new Error("Webhook ID is missing");
@@ -94,7 +87,6 @@ const FigmaViewer = () => {
       console.log("message", message);
 
       setFigmaData(logicResponse.data.figma);
->>>>>>> Stashed changes
     } catch (err) {
       toast.error(err?.message || err?.response?.data || "Failed to fetch Figma file.");
     }
@@ -102,46 +94,6 @@ const FigmaViewer = () => {
   console.log(figmaData);
 
   return (
-<<<<<<< Updated upstream
-    <div className="p-6 min-h-screen min-w-screen bg-gray-900 text-white flex flex-col items-center">
-      <h2 className="text-3xl font-bold mb-4">Figma File Viewer</h2>
-     <form onSubmit={onsubmit}>
-     <div className="flex gap-2">
-        <input
-          type="text"
-          placeholder="Enter Figma File ID"
-          value={fileId}
-          onChange={(e) => setFileId(e.target.value)}
-          className="p-2 w-80 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-         <input
-          type="text"
-          placeholder="Enter Figma File ID"
-          value={repo}
-          onChange={(e) => setRepo(e.target.value)}
-          className="p-2 w-80 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-         <input
-          type="text"
-          placeholder="Enter Figma File ID"
-          value={requirement}
-          onChange={(e) => setRequirement(e.target.value)}
-          className="p-2 w-80 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <button
-type="submit"
-className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded shadow-lg"
-        >
-          Fetch File
-        </button>
-      {error && <p className="text-red-500 mt-4">{error}</p>}
-      </div>
-     </form>
-      </div>
-
-);
-}
-=======
     <div className="p-6 min-h-screen w-[60vw] bg-gray-700 justify-center align-middle text-white flex flex-col items-center">
       <h2 className="text-3xl font-bold mb-4">Start Test</h2>
       <form onSubmit={onsubmit}>
@@ -178,6 +130,5 @@ className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded shadow-lg"
     </div>
   );
 };
->>>>>>> Stashed changes
 
 export default FigmaViewer;

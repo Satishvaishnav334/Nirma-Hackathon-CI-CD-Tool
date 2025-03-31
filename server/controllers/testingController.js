@@ -2,12 +2,9 @@ import axios from "axios";
 import { exec } from "child_process";
 import util from "util";
 import os from "os"
-<<<<<<< Updated upstream
-=======
 import path from "path";
 import fs from "fs";
 const execPromise = util.promisify(exec);
->>>>>>> Stashed changes
 import { AsyncHandler, ApiResponse } from "../utils/ApiHelpers.js";
 import { TestScript } from '../models/testScript.js';
 
@@ -47,18 +44,10 @@ const getLogicFromCodebase = AsyncHandler(async (req, res) => {
   const owner = match[1];
   const repo = match[2];
   const apiUrl = `https://github.com/${owner}/${repo}`;
-<<<<<<< Updated upstream
-  console.log("Repo API URL:", apiUrl);
-
-  try {
-    // Verify repo exists using GitHub API
-    const repoData = await axios.get(apiUrl, {
-=======
 
   try {
     // Optionally verify repo exists using GitHub API
     await axios.get(apiUrl, {
->>>>>>> Stashed changes
       headers: {
         Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`,
         Accept: "application/vnd.github.v3+json",
@@ -89,10 +78,7 @@ const getLogicFromCodebase = AsyncHandler(async (req, res) => {
         const fileContent = await fs.promises.readFile(filePath, "utf-8");
         // Create a prompt for the local LLM
         const prompt = `Extract test cases for the following code:\n\n${fileContent}`;
-<<<<<<< Updated upstream
-=======
         console.log(prompt)
->>>>>>> Stashed changes
         const llmResponse = await axios.post("http://localhost:5000/generate", { prompt });
         const testCases = llmResponse.data.response || "No test cases generated";
         testCasesResults[filePath] = testCases;
@@ -101,12 +87,7 @@ const getLogicFromCodebase = AsyncHandler(async (req, res) => {
         testCasesResults[filePath] = "Error processing file";
       }
     }
-<<<<<<< Updated upstream
-
-    return res.status(200).json(new ApiResponse(200, testCasesResults, "Success"));
-=======
     return res.status(200).json(new ApiResponse(200, { figma: figmaResponse.data, logic: testCasesResults }, "Success"));
->>>>>>> Stashed changes
   } catch (error) {
     console.error("Error during repository clone or test case extraction:", error.message);
     return res.status(500).json(new ApiResponse(500, {}, "Internal Server Error"));
@@ -121,30 +102,7 @@ const getLogicFromCodebase = AsyncHandler(async (req, res) => {
   }
 });
 
-<<<<<<< Updated upstream
-const fetchFigmaFile = async (req, res) => {
-  const fileId = req.body.fileId;
-  const accessToken = req.headers.authorization?.split(" ")[1]; 
-
-
-  try {
-    const response = await axios.get(`https://api.figma.com/v1/files/${fileId}`, {
-      headers: { 'X-Figma-Token': accessToken }
-    });
-    const figmaobject = response.data;
-    res.json(response.data);
-  } catch (error) {
-    console.error("Error fetching Figma file:", error.response?.data || error.message);
-    res.status(error.response?.status || 500).json({
-      error: error.response?.data || "Failed to fetch Figma file"
-    });
-  }
-};
-
-const testScript = ()=>{
-=======
 const testScript = () => {
->>>>>>> Stashed changes
 
 }
 
