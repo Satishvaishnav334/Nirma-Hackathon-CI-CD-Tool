@@ -8,7 +8,6 @@ const execPromise = util.promisify(exec);
 import { AsyncHandler, ApiResponse } from "../utils/ApiHelpers.js";
 import { TestScript } from '../models/testScript.js';
 
-// Helper function to recursively get code files
 async function getCodeFiles(dir) {
   let files = [];
   const items = await fs.promises.readdir(dir, { withFileTypes: true });

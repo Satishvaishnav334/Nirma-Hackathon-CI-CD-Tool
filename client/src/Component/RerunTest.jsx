@@ -1,6 +1,8 @@
 import React from 'react'
+import Sampledata from './Sampledata'
 
-export const RerunTest = () => {
+
+ const RerunTest = () => {
   return (
    <>
    <div className='flex flex-col p-10  h-[80vh] w-[80vw] m-auto justify-center '>
@@ -35,6 +37,8 @@ export const RerunTest = () => {
         </ul>
 </div>
    </div>
+   <Sampledata />
    </>
   )
 }
+export default RerunTest
